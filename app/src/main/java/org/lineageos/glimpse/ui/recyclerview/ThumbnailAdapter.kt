@@ -174,7 +174,7 @@ class ThumbnailAdapter : ListAdapter<AlbumViewModel.AlbumContent, RecyclerView.V
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
                 thumbnailImageView.setRenderEffect(
                     when (isSelected) {
-                        true -> blurRenderEffect
+                        true -> getBlurRenderEffect()
                         false -> null
                     }
                 )
@@ -208,7 +208,7 @@ class ThumbnailAdapter : ListAdapter<AlbumViewModel.AlbumContent, RecyclerView.V
         private const val BLUR_RADIUS = 15f
 
         @RequiresApi(Build.VERSION_CODES.S)
-        private val blurRenderEffect = RenderEffect.createBlurEffect(
+        private fun getBlurRenderEffect() = RenderEffect.createBlurEffect(
             BLUR_RADIUS, BLUR_RADIUS,
             Shader.TileMode.MIRROR
         )
